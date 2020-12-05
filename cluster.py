@@ -36,6 +36,10 @@ def cluster_sentences(sentences, nb_of_clusters=5):
                 clusters[label].append(i)
         return dict(clusters)
 
+def jaccard_similarity(query, document):
+    intersection = set(query).intersection(set(document))
+    union = set(query).union(set(document))
+    return len(intersection)/len(union)
 
 if __name__ == "__main__":
         tok = nltk.data.load('tokenizers/punkt/english.pickle')
@@ -47,6 +51,7 @@ if __name__ == "__main__":
         for cluster in range(nclusters):
                 print("cluster ",cluster,":")
                 cset = set()
+                token_sentences = []
                 for i,sentence in enumerate(clusters[cluster]):
                         sentences[sentence] = sentences[sentence][:-1]
                         if i == 0:
@@ -54,9 +59,21 @@ if __name__ == "__main__":
                         else:
                                 cset = cset & set(sentences[sentence].split())
                         print("\tsentence ",i,": ",sentences[sentence])
-                
+                        token_sentences+=[word_tokenizer(sentences[sentence])]
+
                 print("Keys : ", end='')
                 if not cset == set():
                         print(cset.difference(stopset))
+
+                cnt = 0
+                j_score = 0.0
+                for i in range(len(token_sentences)):
+                    for j in range(i+1,len(token_sentences)):
+                        j_score+=jaccard_similarity(token_sentences[i],token_sentences[j])
+                        cnt+=1
+
+                print("Jaccard Similarity Score: ", end='')
+                print("{:.2f}".format((j_score/cnt)))
                 print()
-        sys.stdout.flush()       
+
+        sys.stdout.flush()

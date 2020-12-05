@@ -1,8 +1,0 @@
-['football', 'is', 'my', 'favourite', 'game', '.']
-[('football', 'NN'), ('is', 'VBZ'), ('my', 'PRP$'), ('favourite', 'JJ'), ('game', 'NN'), ('.', '.')]
-['rose', 'is', 'red', '.']
-[('rose', 'VBD'), ('is', 'VBZ'), ('red', 'JJ'), ('.', '.')]
-['messi', 'is', 'my', 'favorite', 'football', 'player', '.']
-[('messi', 'NN'), ('is', 'VBZ'), ('my', 'PRP$'), ('favorite', 'JJ'), ('football', 'NN'), ('player', 'NN'), ('.', '.')]
-['the', 'rose', 'plant', 'has', 'thorns', '.']
-[('the', 'DT'), ('rose', 'VBD'), ('plant', 'NN'), ('has', 'VBZ'), ('thorns', 'NNS'), ('.', '.')]

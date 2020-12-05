@@ -22,10 +22,10 @@ app.get("/", (req, res, next) => {
 	var reply = {};
 	console.log("Input   :  " + input + "\n\n" + "Number of clusters : " + clusternumber + "\n\n");
 	
-	const proPOS = spawnSync('python3', ["./postagger.py", input], { encoding : 'utf8' });
+	const proPOS = spawnSync('python', ["./postagger.py", input], { encoding : 'utf8' });
 	posData = proPOS.output;
 
-	const proCtr = spawnSync('python3', ["./cluster.py", input, clusternumber], { encoding : 'utf8' });
+	const proCtr = spawnSync('python', ["./cluster.py", input, clusternumber], { encoding : 'utf8' });
 	clusterData = proCtr.output;
 	
 	reply["pos"] = posData;
